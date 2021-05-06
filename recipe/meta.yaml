@@ -19,17 +19,15 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
     - setuptools
   run:
-    - python
+    - python >=3.6
     - networkx
     - conda
 
 test:
-  requires:
-    - python 3.7
   commands:
     - conda-tree -h
 
