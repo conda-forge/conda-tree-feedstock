@@ -1,5 +1,5 @@
 {% set name = "conda-tree" %}
-{% set version = "0.1.0" %}
+{% set version = "0.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/rvalieris/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 9a9699adbfed67849a3d7957add87085aa55af01103c6f7b10fa0c94ad17d5e3
+  sha256: 1f465d75859c91de8d62b410214fde6dba1e69f73afa4a55de40b70387559c44
 
 build:
   number: 0
   noarch: python
   script:
-    - "{{ PYTHON }} -m pip install . --no-deps -vv"
+    - {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - conda-tree = conda_tree:main
 
@@ -38,7 +38,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'conda dependency tree helper'
+  summary: conda dependency tree helper
   dev_url: https://github.com/rvalieris/conda-tree
   doc_url: https://github.com/rvalieris/conda-tree
 
