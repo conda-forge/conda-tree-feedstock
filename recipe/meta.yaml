@@ -19,18 +19,22 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - networkx
     - conda
     - colorama
 
 test:
+  requires:
+    - python {{ python_min }}
+    - pip
   commands:
     - conda-tree -h
+    - pip check
 
 about:
   home: https://github.com/rvalieris/conda-tree
