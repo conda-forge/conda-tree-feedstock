@@ -1,5 +1,5 @@
 {% set name = "conda-tree" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/rvalieris/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 9479a66a404c95367dc2573e650883f162d4e8b772c8204bbd8a36e3b74c5018
+  sha256: e56ffb0389a7d74a9b89f9ceda3359063d19ed0795d88555f17c41c9fcee645e
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script:
     - {{ PYTHON }} -m pip install . --no-deps -vv
@@ -19,18 +19,22 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - networkx
     - conda
     - colorama
 
 test:
+  requires:
+    - python {{ python_min }}
+    - pip
   commands:
     - conda-tree -h
+    - pip check
 
 about:
   home: https://github.com/rvalieris/conda-tree
