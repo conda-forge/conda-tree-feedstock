@@ -1,5 +1,5 @@
 {% set name = "conda-tree" %}
-{% set version = "1.1.1" %}
+{% set version = "1.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/rvalieris/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: e56ffb0389a7d74a9b89f9ceda3359063d19ed0795d88555f17c41c9fcee645e
+  sha256: e68481c65d7d248a3b87881df6bb88547799499bcac76655a99937923a431fdc
 
 build:
   number: 0
