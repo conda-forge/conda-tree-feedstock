@@ -1,0 +1,56 @@
+schema_version: 1
+
+context:
+  name: conda-tree
+  version: "1.2.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/rvalieris/${{ name }}/archive/${{ version }}.tar.gz
+  sha256: ebb5e1b2120197a4caa4fd6a91b4fe6eaea64b4380cdf4f12efb067d17a971a1
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - ${{ PYTHON }} -m pip install . --no-deps -vv
+  python:
+    entry_points:
+      - conda-tree = conda_tree.cli:main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - hatchling
+  run:
+    - python >=${{ python_min }}
+    # from [tool.pixi.dependencies]
+    - conda >=25.0
+    - networkx >=2.0
+    - colorama
+
+tests:
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+        - pip
+    script:
+      - conda-tree -h
+      - pip check
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: conda dependency tree helper
+  homepage: https://github.com/rvalieris/conda-tree
+  repository: https://github.com/rvalieris/conda-tree
+  documentation: https://github.com/rvalieris/conda-tree
+
+extra:
+  recipe-maintainers:
+    - xylar
+    - rvalieris
