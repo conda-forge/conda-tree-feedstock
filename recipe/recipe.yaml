@@ -19,7 +19,7 @@ build:
     - ${{ PYTHON }} -m pip install . --no-deps -vv
   python:
     entry_points:
-      - conda-tree = conda_tree:main
+      - conda-tree = conda_tree.cli:main
 
 requirements:
   host:
