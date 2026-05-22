@@ -2,18 +2,18 @@ schema_version: 1
 
 context:
   name: conda-tree
-  version: "1.1.2"
+  version: "1.2.0"
 
 package:
   name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
-  url: https://github.com/rvalieris/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: e68481c65d7d248a3b87881df6bb88547799499bcac76655a99937923a431fdc
+  url: https://github.com/rvalieris/${{ name }}/archive/${{ version }}.tar.gz
+  sha256: ebb5e1b2120197a4caa4fd6a91b4fe6eaea64b4380cdf4f12efb067d17a971a1
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script:
     - ${{ PYTHON }} -m pip install . --no-deps -vv
@@ -25,11 +25,12 @@ requirements:
   host:
     - python ${{ python_min }}.*
     - pip
-    - setuptools
+    - hatchling
   run:
     - python >=${{ python_min }}
-    - networkx
-    - conda
+    # from [tool.pixi.dependencies]
+    - conda >=25.0
+    - networkx >=2.0
     - colorama
 
 tests:
